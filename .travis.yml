@@ -12,7 +12,7 @@ jobs:
   include:
     - stage: Test
       script:
-        - sudo pip3 install cpplint
+        - sudo pip install cpplint
         - make test
     - stage: Build
       script: 
