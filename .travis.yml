@@ -10,4 +10,4 @@ deploy:
   file: build/sleep
   skip_cleanup: true
   on:
-    tags: false
+    tags: true
