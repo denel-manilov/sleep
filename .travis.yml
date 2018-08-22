@@ -4,6 +4,10 @@ language: cpp
 
 compiler: gcc
 
+cache:
+  directories:
+    - /home/travis/build/
+
 jobs:
   include:
     - stage: Test
