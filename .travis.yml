@@ -1,0 +1,13 @@
+language: cpp
+
+compiler: gcc
+
+script: make
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: build/sleep
+  skip_cleanup: true
+  on:
+    tags: false
