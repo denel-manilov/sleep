@@ -1,8 +1,8 @@
 sudo: required
 
-language: python
+language: cpp
 
-python: 3.6
+compiler: gcc
 
 cache:
   directories:
@@ -12,13 +12,12 @@ jobs:
   include:
     - stage: Test
       script:
-        - sudo pip install cpplint
+        - sudo apt-get update -q
+        - sudo apt-get install python3 python3-pip -y
+        - sudo pip3 install cpplint
         - make test
     - stage: Build
-      script: 
-        - sudo apt-get update -qq
-        - sudo apt-get install gcc -y
-        - make build
+      script: make build
     - stage: Release
       script: ls build && echo "Deploying to GitHub releases ..."
       deploy:
@@ -27,4 +26,4 @@ jobs:
         file: build/sleep
         skip_cleanup: true
         on:
-          tags: false
+          tags: true
