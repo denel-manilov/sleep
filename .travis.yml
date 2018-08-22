@@ -1,8 +1,8 @@
 sudo: required
 
-language: cpp
+language: python
 
-compiler: gcc
+python: 3.6
 
 cache:
   directories:
@@ -12,12 +12,13 @@ jobs:
   include:
     - stage: Test
       script:
-        - sudo apt-get update -q
-        - sudo apt-get install python3 python3-pip -y
         - sudo pip3 install cpplint
         - make test
     - stage: Build
-      script: make build
+      script: 
+        - sudo apt-get update -qq
+        - sudo apt-get install gcc -y
+        - make build
     - stage: Release
       script: ls build && echo "Deploying to GitHub releases ..."
       deploy:
